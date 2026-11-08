@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Folio</title>
+<meta name="description" content="Offline viewer for your HTML files. Ink, highlights and notes made inside them are kept on this device.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Folio">
+<meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17181b" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div id="library">
+  <header class="bar">
+    <div class="brand"><img src="icons/icon-192.png" alt=""><h1>Folio</h1></div>
+    <div class="search"><input id="q" type="search" placeholder="Search your files" autocomplete="off" enterkeyhint="search"></div>
+    <div class="actions">
+      <button id="bImport" class="primary">＋ Add HTML</button>
+      <button id="bMore" class="icon" aria-label="Backup and settings">⋯</button>
+    </div>
+  </header>
+
+  <div id="notice" hidden></div>
+
+  <main id="grid" aria-live="polite"></main>
+
+  <section id="empty" hidden>
+    <div class="emptybox">
+      <h2>Your HTML library</h2>
+      <p>Add the HTML files you've made. Each opens full screen. Whatever you write, highlight or type inside a file is saved on this iPad as you go, and works offline.</p>
+      <button id="bImport2" class="primary big">＋ Add HTML files</button>
+      <p class="hint">You can also drag files in from the Files app.</p>
+    </div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<div id="viewer" hidden>
+  <iframe id="frame" title="Document" allow="clipboard-read; clipboard-write; fullscreen; web-share"></iframe>
+  <div id="tab" role="button" tabindex="0" aria-label="Folio menu"><span class="dot"></span><span class="chev">‹</span></div>
+  <div id="vmenu" hidden>
+    <div class="vtitle" id="vTitle"></div>
+    <div class="vstat" id="vStat">Opening…</div>
+    <button id="vBack">‹ Library</button>
+    <button id="vReload">Reload file</button>
+    <button id="vBackup">Back up this file's notes</button>
+    <button id="vTabSide">Move this button to the other side</button>
+  </div>
+</div>
+
+<div id="sheetWrap" hidden><div id="sheet" role="dialog" aria-modal="true"></div></div>
+<div id="toast" role="status"></div>
+<input id="file" type="file" accept=".html,.htm,text/html" multiple hidden>
+<input id="restoreFile" type="file" accept=".json,.folio,application/json" hidden>
+
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
